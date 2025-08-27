@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Émission & Revue Fanjary — Vitrine</title>
+  <meta name="description" content="Site vitrine inspiré de 99% Invisible, dédié à la page Facebook Émission & Revue Fanjary : à propos, publications, photos, thèmes sombre/clair/coloré." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    /* Thèmes */
+    :root{
+      --bg:#0b0d12; --bg-2:#0e121a; --text:#e8eef7; --muted:#aab3c2; --card:#121623;
+      --accent:#ff4d4d; --accent-2:#19d47b; --accent-3:#3aa0ff;
+      --ring:0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.04);
+      --glass:rgba(255,255,255,.06); --border:1px solid rgba(255,255,255,.08);
+    }
+    :root.light{
+      --bg:#f6f8fb; --bg-2:#ffffff; --text:#0f1725; --muted:#55607a; --card:#ffffff;
+      --accent:#e53935; --accent-2:#0ea765; --accent-3:#1976d2;
+      --ring:0 10px 30px rgba(0,0,0,.06), inset 0 1px 0 rgba(255,255,255,.6);
+      --glass:rgba(0,0,0,.04); --border:1px solid rgba(0,0,0,.08);
+    }
+    :root.color{
+      --bg:#0a0b1a; --bg-2:#0f0f24; --text:#f3f5ff; --muted:#b7bde0; --card:#12122b;
+      --accent:#ff6ec7; --accent-2:#1de5a0; --accent-3:#7aa2ff;
+      --ring:0 12px 34px rgba(95,105,255,.25), inset 0 1px 0 rgba(255,255,255,.06);
+      --glass:rgba(122,162,255,.08); --border:1px solid rgba(122,162,255,.18);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%; margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif; color:var(--text);
+      background:
+        radial-gradient(1100px 520px at 10% -10%, color-mix(in srgb, var(--accent-3) 30%, transparent), transparent 60%),
+        radial-gradient(800px 520px at 110% 10%, color-mix(in srgb, var(--accent-2) 28%, transparent), transparent 60%),
+        radial-gradient(900px 600px at 50% 120%, color-mix(in srgb, var(--accent) 28%, transparent), transparent 60%),
+        var(--bg);
+    }
+    .container{max-width:1160px;margin:0 auto;padding:18px}
+
+    header{position:sticky;top:0;z-index:1000;backdrop-filter:saturate(150%) blur(10px);background:linear-gradient(180deg, rgba(0,0,0,.22), rgba(0,0,0,0)), var(--glass);border-bottom:var(--border)}
+    .nav{display:flex;align-items:center;gap:14px;}
+    .brand{display:flex;align-items:center;gap:12px;min-width:0}
+    .logo{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,var(--accent-3),var(--accent-2));box-shadow:0 8px 22px rgba(0,0,0,.25);display:grid;place-items:center;color:white;font-weight:800;letter-spacing:.5px;flex:0 0 auto}
+    .brand-txt{min-width:0}
+    .title{font-weight:800;letter-spacing:.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .subtitle{color:var(--muted);font-size:12px}
+    .spacer{flex:1}
+    .nav-links{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:flex-end}
+    .nav-links a{text-decoration:none;color:var(--text);padding:10px 14px;border-radius:999px;border:var(--border);background:linear-gradient(180deg,transparent,rgba(255,255,255,.02));display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14px;box-shadow:var(--ring)}
+    .right-tools{display:flex;align-items:center;gap:8px;flex-wrap:nowrap}
+    .toggle, .theme-menu{border-radius:999px;display:inline-grid;place-items:center;width:44px;height:44px;border:var(--border);background:var(--glass);cursor:pointer;box-shadow:var(--ring)}
+    .theme-menu{position:relative}
+    .theme-popup{position:absolute;top:50px;right:0;background:var(--card);border:var(--border);border-radius:14px;box-shadow:var(--ring);padding:8px;display:none}
+    .theme-popup button{display:flex;align-items:center;gap:8px;border:var(--border);background:var(--glass);border-radius:10px;padding:8px 10px;margin:6px 4px;width:180px;color:var(--text);cursor:pointer}
+
+    .hero{padding:32px 0 12px}
+    .hero .grid{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0));border:var(--border);border-radius:20px;box-shadow:var(--ring);overflow:hidden}
+    .card .content{padding:18px}
+    .badge{display:inline-flex;gap:8px;align-items:center;font-size:12px;color:var(--muted);flex-wrap:wrap}
+    .pill{padding:6px 10px;border-radius:999px;border:var(--border);background:var(--glass)}
+    .lead{font-size:36px;line-height:1.08;margin:10px 0 8px;font-weight:800}
+    .sub{color:var(--muted);font-size:15px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .section{padding:24px 0}
+    .section h2{margin:0 0 10px;font-size:22px}
+    .mini{font-size:13px;color:var(--muted)}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:14px;border:var(--border);background:var(--glass);text-decoration:none;color:var(--text);font-weight:600;box-shadow:var(--ring)}
+    .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+    .footer{padding:24px 0 40px;color:var(--muted);font-size:13px}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+    @media (max-width: 980px){
+      .hero .grid, .grid-3, .grid-2{grid-template-columns:1fr}
+      .nav-links{overflow:auto;max-width:60vw}
+      .lead{font-size:28px}
+    }
+  </style>
+</head>
+<body>
+  <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous"
+    src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v20.0">
+  </script>
+
+  <header>
+    <div class="container nav" role="navigation">
+      <div class="brand">
+        <div class="logo">EF</div>
+        <div class="brand-txt">
+          <div class="title">Émission & Revue Fanjary</div>
+          <div class="subtitle">Vitrine inspirée par 99% Invisible</div>
+        </div>
+      </div>
+      <div class="spacer"></div>
+      <nav class="nav-links">
+        <a href="#about">🏠 Accueil</a>
+        <a href="#posts">📰 Publications</a>
+        <a href="#photos">🖼️ Photos</a>
+        <a href="#contact">✉️ Contact</a>
+        <a href="#inspo">⭐ Inspiration</a>
+      </nav>
+      <div class="right-tools">
+        <button class="toggle" id="modeToggle" aria-label="Basculer clair/sombre">
+          <svg id="icon-dark" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+          <svg id="icon-light" style="display:none" xmlns="http://www.w3.org/2000/svg"
+            width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4"/>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41
+                     M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+          </svg>
+        </button>
+        <div class="theme-menu" id="themeMenu" title="Thème coloré">
+          <span class="sr-only">Ouvrir le menu des thèmes</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22a10 10 0 1 1 10-10c0 1.1-.9 2-2 2h-1a2 2 0 0 0-2 2
+                     2 2 0 0 0 2 2c0 1.1-.9 2-2 2h-3Z"/>
+            <circle cx="8" cy="14" r="1"/>
+            <circle cx="12" cy="6" r="1"/>
+            <circle cx="18" cy="8" r="1"/>
+          </svg>
+          <div class="theme-popup" id="themePopup">
+            <button data-theme="default">🌚 Sombre</button>
+            <button data-theme="light">🌞 Clair</button>
+            <button data-theme="color">🌈 Coloré</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero" id="about">
+      <div class="grid">
+        <article class="card">
+          <div class="content">
+            <div class="badge">
+              <span class="pill">Page Facebook</span>
+              <span class="pill">Émission & Revue Fanjary</span>
+              <span class="pill">ID : 100067224102845</span>
+            </div>
+            <h1 class="lead">Actualités, émissions et publications — tout au même endroit</h1>
+            <p class="sub">Vitrine au style éditorial “99% Invisible”. Contenus publics Facebook intégrés via widgets. Thèmes sombre/clair/coloré, icônes élégantes, layout responsive.</p>
+            <div style="display:flex;gap:10px;margin-top:10px;flex-wrap:wrap">
+              <a class="btn" href="#posts">📰 Voir les publications</a>
+              <a class="btn" href="#photos">🖼️ Ouvrir la galerie</a>
+              <a class="btn" href="#contact">✉️ Contact</a>
+            </div>
+          </div>
+        </article>
+        <aside class="card">
+          <div class="content">
+            <h2 style="margin:0 0 10px">À propos</h2>
+            <p class="mini">Résumé public et timeline via widget officiel Facebook.</p>
+            <div class="fb-page"
+                 data-href="https://www.facebook.com/profile.php?id=100067224102845"
+                 data-tabs="timeline"
+                 data-width="500"
+                 data-height="520"
+                 data-small-header="false"
+                 data-adapt-container-width="true"
+                 data-hide-cover="false"
+                 data-show-facepile="true">
+              <blockquote cite="https://www.facebook.com/profile.php?id=100067224102845"
+                          class="fb-xfbml-parse-ignore">
+                <a href="https://www.facebook.com/profile.php?id=100067224102845">Émission & Revue Fanjary</a>
+              </blockquote>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="posts">
+      <h2>Publications</h2>
+      <p class="mini">Flux d’actualités intégré depuis Facebook (embeds).</p>
+      <div class="grid-2">
+        <div class="card"><div class="content"><div class="fb-post"
+             data-href="https://www.facebook.com/story.php?id=100067224102845&story_fbid=959252289658899"
+             data-width="500"
+             data-show-text="true"></div></div></div>
+        <div class="card"><div class="content"><div class="fb-post"
+             data-href="https://www.facebook.com/story.php?id=100067224102845&story_fbid=952438973673564"
+             data-width="500"
+             data-show-text="true"></div></div></div>
+        <div class="card"><div class="content"><div class="fb-post"
+             data-href="https://www.facebook.com/story.php?id=100067224102845&story_fbid=931192392464889"
+             data-width="500"
+             data-show-text="true"></div></div></div>
+        <div class="card"><div class="content"><div class="fb-post"
+             data-href="https://m.facebook.com/story.php/?id=100067224102845&story_fbid=814352430815553"
+             data-width="500"
+             data-show-text="true"></div></div></div>
+      </div>
+    </section>
+
+    <section class="section" id="photos">
+      <h2>Galerie Photos</h2>
+      <p class="mini">Photos s’affichent via les publications pour rester à jour automatiquement.</p>
+      <div class="gallery">
+        <div class="card"><div class="content"><div class="fb-post"
+             data-href="https://www.facebook.com/story.php?id=100067224102845&story_fbid=959252289658899"
+             data-width="350"></div></div></div>
+        <div class="card"><div class="content"><div class="fb-post"
+             data-href="https://www.facebook.com/story.php?id=100067224102845&story_fbid=952438973673564"
+             data-width="350"></div></div></div>
+        <div class="card"><div class="content"><div class="fb-post"
+             data-href="https://www.facebook.com/story.php?id=100067224102845&story_fbid=931192392464889"
+             data-width="350"></div></div></div>
+        <div class="card"><div class="content"><div class="fb-post"
+             data-href="https://m.facebook.com/story.php/?id=100067224102845&story_fbid=814352430815553"
+             data-width="350"></div></div></div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <h2>Contact</h2>
+      <div class="grid-3">
+        <div class="card"><div class="content"><h3>Facebook</h3><p class="mini">Envoyer un message ou suivre la page.</p><a class="btn" href="https://www.facebook.com/profile.php?id=100067224102845" target="_blank">🔗 Ouvrir la page</a></div></div>
+        <div class="card"><div class="content"><h3>Messenger</h3><p class="mini">Si Messenger est activé.</p><a class="btn" href="https://m.me/100067224102845" target="_blank">💬 Ouvrir Messenger</a></div></div>
+        <div class="card"><div class="content"><h3>Partager</h3><p class="mini">Copiez l’URL de ce site vitrine.</p><button class="btn" id="shareBtn">🔗 Copier le lien</button></div></div>
+      </div>
+    </section>
+
+    <section class="section" id="inspo">
+      <h2>Inspiration & Crédits</h2>
+      <div class="grid-2">
+        <div class="card"><div class="content"><h3>Article 99% Invisible</h3><p class="mini">Source d’inspiration : “Setting Up a Free One-Handed Touch-Typing System on Your PC”</p><a class="btn" href="https://99percentinvisible.org/article/one-hand-touch-typing-setup/" target="_blank">ℹ En ligne</a></div></div>
+        <div class="card"><div class="content"><h3>Remarques</h3><ul class="mini"><li>Contenu Facebook intégré via widgets officiels.</li><li>Le site s’inspire visuellement mais ne reprend pas de contenu protégé.</li><li>Thèmes inclus : sombre, clair, coloré.</li></ul></div></div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p class="mini">&copy; 2025 — Vitrine non officielle inspirée de 99% Invisible. Tous droits réservés.</p>
+    </footer>
+  </main>
+
+  <script>
+    const modeToggle = document.getElementById('modeToggle');
+    const iconDark = document.getElementById('icon-dark');
+    const iconLight = document.getElementById('icon-light');
+    const themeMenu = document.getElementById('themeMenu');
+    const themePopup = document.getElementById('themePopup');
+    const shareBtn = document.getElementById('shareBtn');
+
+    modeToggle.addEventListener('click', () => {
+      document.documentElement.classList.toggle('light');
+      const isLight = document.documentElement.classList.contains('light');
+      iconDark.style.display = isLight ? 'none' : '';
+      iconLight.style.display = isLight ? '' : 'none';
+    });
+
+    themeMenu.addEventListener('click', () => {
+      themePopup.style.display = themePopup.style.display === 'block' ? 'none' : 'block';
+    });
+
+    themePopup.addEventListener('click', (e) => {
+      if (e.target.dataset.theme) {
+        document.documentElement.classList.remove('light', 'color');
+        if (e.target.dataset.theme === 'light') document.documentElement.classList.add('light');
+        if (e.target.dataset.theme === 'color') document.documentElement.classList.add('color');
+        themePopup.style.display = 'none';
+      }
+    });
+
+    shareBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText(location.href);
+      shareBtn.textContent = 'Lien copié !';
+      setTimeout(() => shareBtn.textContent = '🔗 Copier le lien', 2000);
+    });
+  </script>
+</body>
+</html>
