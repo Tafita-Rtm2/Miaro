@@ -1,283 +1,724 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Émission & Revue Fanjary — Vitrine</title>
-  <meta name="description" content="Site vitrine inspiré de 99% Invisible, dédié à la page Facebook Émission & Revue Fanjary : à propos, publications, photos, thèmes sombre/clair/coloré." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-  <style>
-    /* Thèmes */
-    :root{
-      --bg:#0b0d12; --bg-2:#0e121a; --text:#e8eef7; --muted:#aab3c2; --card:#121623;
-      --accent:#ff4d4d; --accent-2:#19d47b; --accent-3:#3aa0ff;
-      --ring:0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.04);
-      --glass:rgba(255,255,255,.06); --border:1px solid rgba(255,255,255,.08);
-    }
-    :root.light{
-      --bg:#f6f8fb; --bg-2:#ffffff; --text:#0f1725; --muted:#55607a; --card:#ffffff;
-      --accent:#e53935; --accent-2:#0ea765; --accent-3:#1976d2;
-      --ring:0 10px 30px rgba(0,0,0,.06), inset 0 1px 0 rgba(255,255,255,.6);
-      --glass:rgba(0,0,0,.04); --border:1px solid rgba(0,0,0,.08);
-    }
-    :root.color{
-      --bg:#0a0b1a; --bg-2:#0f0f24; --text:#f3f5ff; --muted:#b7bde0; --card:#12122b;
-      --accent:#ff6ec7; --accent-2:#1de5a0; --accent-3:#7aa2ff;
-      --ring:0 12px 34px rgba(95,105,255,.25), inset 0 1px 0 rgba(255,255,255,.06);
-      --glass:rgba(122,162,255,.08); --border:1px solid rgba(122,162,255,.18);
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radio Fanjary - Accueil</title>
 
-    *{box-sizing:border-box}
-    html,body{height:100%; margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif; color:var(--text);
-      background:
-        radial-gradient(1100px 520px at 10% -10%, color-mix(in srgb, var(--accent-3) 30%, transparent), transparent 60%),
-        radial-gradient(800px 520px at 110% 10%, color-mix(in srgb, var(--accent-2) 28%, transparent), transparent 60%),
-        radial-gradient(900px 600px at 50% 120%, color-mix(in srgb, var(--accent) 28%, transparent), transparent 60%),
-        var(--bg);
-    }
-    .container{max-width:1160px;margin:0 auto;padding:18px}
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
-    header{position:sticky;top:0;z-index:1000;backdrop-filter:saturate(150%) blur(10px);background:linear-gradient(180deg, rgba(0,0,0,.22), rgba(0,0,0,0)), var(--glass);border-bottom:var(--border)}
-    .nav{display:flex;align-items:center;gap:14px;}
-    .brand{display:flex;align-items:center;gap:12px;min-width:0}
-    .logo{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,var(--accent-3),var(--accent-2));box-shadow:0 8px 22px rgba(0,0,0,.25);display:grid;place-items:center;color:white;font-weight:800;letter-spacing:.5px;flex:0 0 auto}
-    .brand-txt{min-width:0}
-    .title{font-weight:800;letter-spacing:.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-    .subtitle{color:var(--muted);font-size:12px}
-    .spacer{flex:1}
-    .nav-links{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:flex-end}
-    .nav-links a{text-decoration:none;color:var(--text);padding:10px 14px;border-radius:999px;border:var(--border);background:linear-gradient(180deg,transparent,rgba(255,255,255,.02));display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14px;box-shadow:var(--ring)}
-    .right-tools{display:flex;align-items:center;gap:8px;flex-wrap:nowrap}
-    .toggle, .theme-menu{border-radius:999px;display:inline-grid;place-items:center;width:44px;height:44px;border:var(--border);background:var(--glass);cursor:pointer;box-shadow:var(--ring)}
-    .theme-menu{position:relative}
-    .theme-popup{position:absolute;top:50px;right:0;background:var(--card);border:var(--border);border-radius:14px;box-shadow:var(--ring);padding:8px;display:none}
-    .theme-popup button{display:flex;align-items:center;gap:8px;border:var(--border);background:var(--glass);border-radius:10px;padding:8px 10px;margin:6px 4px;width:180px;color:var(--text);cursor:pointer}
+    <!-- Lucide Icons -->
+    <script src="https://cdn.jsdelivr.net/npm/lucide/dist/lucide.min.js"></script>
 
-    .hero{padding:32px 0 12px}
-    .hero .grid{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}
-    .card{background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0));border:var(--border);border-radius:20px;box-shadow:var(--ring);overflow:hidden}
-    .card .content{padding:18px}
-    .badge{display:inline-flex;gap:8px;align-items:center;font-size:12px;color:var(--muted);flex-wrap:wrap}
-    .pill{padding:6px 10px;border-radius:999px;border:var(--border);background:var(--glass)}
-    .lead{font-size:36px;line-height:1.08;margin:10px 0 8px;font-weight:800}
-    .sub{color:var(--muted);font-size:15px}
-    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-    .section{padding:24px 0}
-    .section h2{margin:0 0 10px;font-size:22px}
-    .mini{font-size:13px;color:var(--muted)}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:14px;border:var(--border);background:var(--glass);text-decoration:none;color:var(--text);font-weight:600;box-shadow:var(--ring)}
-    .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-    .footer{padding:24px 0 40px;color:var(--muted);font-size:13px}
-    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    <style>
+        /* --- CSS RESET & VARIABLES --- */
+        :root {
+            --bg-color: #0b0d12;
+            --text-color: #e8eef7;
+            --muted-color: #aab3c2;
+            --accent-color: #ff4d4d;
 
-    @media (max-width: 980px){
-      .hero .grid, .grid-3, .grid-2{grid-template-columns:1fr}
-      .nav-links{overflow:auto;max-width:60vw}
-      .lead{font-size:28px}
-    }
-  </style>
+            /* Plexiglass Style */
+            --glass-bg: rgba(28, 37, 54, 0.5);
+            --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            --glass-blur: blur(10px);
+
+            /* Animations */
+            --transition-speed: 0.5s;
+            --transition-elastic: cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden; /* Prevent horizontal scroll when sidebar is hidden */
+        }
+
+        h1, h2, h3 {
+            font-weight: 800;
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        /* --- LAYOUT & STRUCTURE --- */
+        #main-content {
+            padding: 2rem;
+            margin-left: 0; /* Will be adjusted by JS */
+            transition: margin-left var(--transition-speed) var(--transition-elastic);
+        }
+
+        .page-section {
+            min-height: 100vh;
+            border-bottom: 1px solid var(--glass-border);
+            padding-top: 6rem; /* Offset for floating button */
+        }
+        .page-section:last-child {
+            border-bottom: none;
+        }
+
+        /* --- FLOATING TOGGLE BUTTON --- */
+        #sidebar-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1001;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: var(--glass-border);
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            box-shadow: var(--glass-shadow);
+            color: var(--text-color);
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            transition: all 0.3s ease;
+        }
+
+        #sidebar-toggle:hover {
+            transform: scale(1.1);
+            background: rgba(28, 37, 54, 0.7);
+        }
+
+        /* --- SIDEBAR --- */
+        #sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 120px; /* Narrower for icon-centric design */
+            padding: 20px 0;
+
+            background: var(--glass-bg);
+            border-right: var(--glass-border);
+            box-shadow: var(--glass-shadow);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+
+            transform: translateX(-100%);
+            transition: transform var(--transition-speed) var(--transition-elastic);
+            z-index: 1000;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        #sidebar.open {
+            transform: translateX(0);
+        }
+
+        .sidebar-header {
+            color: var(--text-color);
+            font-size: 1.2rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            width: 100%;
+        }
+
+        .nav-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            padding: 15px 10px;
+            border-radius: 20px; /* Bubble shape */
+            width: 90px;
+            text-align: center;
+            color: var(--muted-color);
+            transition: all 0.3s ease;
+            background: transparent;
+            border: 1px solid transparent;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-color);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-link span {
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .nav-link i {
+            width: 28px;
+            height: 28px;
+        }
+
+        /* --- CONTENT STYLING --- */
+        .page-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            font-weight: 800;
+        }
+
+        /* Hero Section */
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: calc(100vh - 6rem);
+            padding: 1rem;
+        }
+        .logo-placeholder {
+            width: 100px;
+            height: 100px;
+            border-radius: 25px;
+            background: var(--accent-color);
+            color: white;
+            font-size: 4rem;
+            font-weight: 800;
+            display: grid;
+            place-items: center;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(255, 77, 77, 0.3);
+        }
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 10vw, 4rem);
+        }
+        .slogan {
+            font-size: clamp(1rem, 4vw, 1.2rem);
+            color: var(--muted-color);
+            margin: 10px 0 30px;
+            max-width: 500px;
+        }
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 30px;
+            border-radius: 50px;
+            background: var(--accent-color);
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(255, 77, 77, 0.4);
+        }
+
+        /* Grid & Cards */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .content-card {
+            background: var(--glass-bg);
+            border: var(--glass-border);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .content-card:hover {
+            transform: translateY(-10px);
+        }
+        .content-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .card-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .card-date {
+            font-size: 0.8rem;
+            color: var(--muted-color);
+            margin-bottom: 10px;
+            display: block;
+        }
+        .card-content h3 {
+            margin-bottom: 10px;
+        }
+        .card-content p {
+            color: var(--muted-color);
+            flex-grow: 1;
+        }
+        .card-link {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+        }
+
+        /* Episode List */
+        .episode-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .episode-item {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: var(--glass-bg);
+            border: var(--glass-border);
+            border-radius: 15px;
+        }
+        .episode-info {
+            flex: 1 1 300px;
+        }
+        .episode-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        .episode-info p {
+            font-size: 0.9rem;
+            color: var(--muted-color);
+        }
+        .episode-item audio {
+            width: 100%;
+            max-width: 350px;
+            flex: 1 1 350px;
+        }
+
+        /* About Section */
+        .about-description {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            text-align: center;
+            color: var(--muted-color);
+            line-height: 1.6;
+        }
+        .animator-card {
+            text-align: center;
+            padding: 1rem;
+        }
+        .animator-card img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 3px solid var(--accent-color);
+        }
+        .animator-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        .animator-card p {
+            color: var(--muted-color);
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            background: var(--glass-bg);
+            padding: 2rem;
+            border-radius: 20px;
+            border: var(--glass-border);
+        }
+        @media (min-width: 768px) {
+            .contact-container {
+                grid-template-columns: 1fr 1fr;
+                padding: 3rem;
+            }
+        }
+        .contact-info h3 {
+            margin-bottom: 1rem;
+        }
+        .contact-info p {
+            color: var(--muted-color);
+            margin-bottom: 1.5rem;
+        }
+        .contact-info ul {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        .contact-info li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 1rem;
+        }
+        .social-links a {
+            color: var(--muted-color);
+            margin-right: 15px;
+            transition: color 0.3s ease;
+        }
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+        .contact-form form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            border-radius: 10px;
+            border: var(--glass-border);
+            background: rgba(0,0,0,0.2);
+            color: var(--text-color);
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        .contact-form input::placeholder, .contact-form textarea::placeholder {
+            color: var(--muted-color);
+        }
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Schedule Section */
+        .schedule-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .schedule-day {
+            background: var(--glass-bg);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: var(--glass-border);
+        }
+        .schedule-day h3 {
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        .schedule-day p {
+            color: var(--muted-color);
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+        .schedule-day p span {
+            color: var(--text-color);
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+            color: var(--muted-color);
+            font-size: 0.9rem;
+            border-top: var(--glass-border);
+        }
+        footer .social-links {
+            margin-bottom: 1rem;
+        }
+        footer .social-links a {
+            font-size: 1.5rem; /* Larger icons in footer */
+        }
+        footer .social-links a:not(:last-child) {
+            margin-right: 15px;
+        }
+    </style>
 </head>
 <body>
-  <div id="fb-root"></div>
-  <script async defer crossorigin="anonymous"
-    src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v20.0">
-  </script>
 
-  <header>
-    <div class="container nav" role="navigation">
-      <div class="brand">
-        <div class="logo">EF</div>
-        <div class="brand-txt">
-          <div class="title">Émission & Revue Fanjary</div>
-          <div class="subtitle">Vitrine inspirée par 99% Invisible</div>
+    <!-- Bouton pour ouvrir/fermer la barre latérale -->
+    <button id="sidebar-toggle" title="Ouvrir le menu">
+        <i data-lucide="menu"></i>
+    </button>
+
+    <!-- Barre de navigation latérale (Sidebar) -->
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <h3>Menu</h3>
         </div>
-      </div>
-      <div class="spacer"></div>
-      <nav class="nav-links">
-        <a href="#about">🏠 Accueil</a>
-        <a href="#posts">📰 Publications</a>
-        <a href="#photos">🖼️ Photos</a>
-        <a href="#contact">✉️ Contact</a>
-        <a href="#inspo">⭐ Inspiration</a>
-      </nav>
-      <div class="right-tools">
-        <button class="toggle" id="modeToggle" aria-label="Basculer clair/sombre">
-          <svg id="icon-dark" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-            viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-          </svg>
-          <svg id="icon-light" style="display:none" xmlns="http://www.w3.org/2000/svg"
-            width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="4"/>
-            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41
-                     M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
-          </svg>
-        </button>
-        <div class="theme-menu" id="themeMenu" title="Thème coloré">
-          <span class="sr-only">Ouvrir le menu des thèmes</span>
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-            viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 22a10 10 0 1 1 10-10c0 1.1-.9 2-2 2h-1a2 2 0 0 0-2 2
-                     2 2 0 0 0 2 2c0 1.1-.9 2-2 2h-3Z"/>
-            <circle cx="8" cy="14" r="1"/>
-            <circle cx="12" cy="6" r="1"/>
-            <circle cx="18" cy="8" r="1"/>
-          </svg>
-          <div class="theme-popup" id="themePopup">
-            <button data-theme="default">🌚 Sombre</button>
-            <button data-theme="light">🌞 Clair</button>
-            <button data-theme="color">🌈 Coloré</button>
-          </div>
+        <div class="nav-links">
+            <a href="#accueil" class="nav-link active">
+                <i data-lucide="home"></i>
+                <span>Accueil</span>
+            </a>
+            <a href="#publication" class="nav-link">
+                <i data-lucide="newspaper"></i>
+                <span>Publication</span>
+            </a>
+            <a href="#emission" class="nav-link">
+                <i data-lucide="radio"></i>
+                <span>Emission</span>
+            </a>
+            <a href="#programme" class="nav-link">
+                <i data-lucide="calendar-days"></i>
+                <span>Programme</span>
+            </a>
+            <a href="#apropos" class="nav-link">
+                <i data-lucide="info"></i>
+                <span>À propos</span>
+            </a>
+            <a href="#contact" class="nav-link">
+                <i data-lucide="mail"></i>
+                <span>Contact</span>
+            </a>
         </div>
-      </div>
-    </div>
-  </header>
+    </nav>
 
-  <main class="container">
-    <section class="hero" id="about">
-      <div class="grid">
-        <article class="card">
-          <div class="content">
-            <div class="badge">
-              <span class="pill">Page Facebook</span>
-              <span class="pill">Émission & Revue Fanjary</span>
-              <span class="pill">ID : 100067224102845</span>
+    <!-- Contenu principal de la page -->
+    <main id="main-content">
+        <!-- Section Accueil -->
+        <section id="accueil" class="page-section">
+            <div class="hero-content">
+                <div class="logo-placeholder">F</div>
+                <h1>Radio Fanjary</h1>
+                <p class="slogan">Actualités, émissions et publications — tout au même endroit.</p>
+                <a href="#emission" class="cta-button">
+                    <i data-lucide="play-circle"></i>
+                    <span>Écouter en direct</span>
+                </a>
             </div>
-            <h1 class="lead">Actualités, émissions et publications — tout au même endroit</h1>
-            <p class="sub">Vitrine au style éditorial “99% Invisible”. Contenus publics Facebook intégrés via widgets. Thèmes sombre/clair/coloré, icônes élégantes, layout responsive.</p>
-            <div style="display:flex;gap:10px;margin-top:10px;flex-wrap:wrap">
-              <a class="btn" href="#posts">📰 Voir les publications</a>
-              <a class="btn" href="#photos">🖼️ Ouvrir la galerie</a>
-              <a class="btn" href="#contact">✉️ Contact</a>
+        </section>
+
+        <!-- Section Publication (Actualités) -->
+        <section id="publication" class="page-section">
+            <h2>Actualités</h2>
+            <div class="grid-container">
+                <article class="content-card">
+                    <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=600" alt="Image d'actualité">
+                    <div class="card-content">
+                        <span class="card-date">01 Septembre, 2025</span>
+                        <h3>Nouvel événement à venir</h3>
+                        <p>Nous sommes ravis d'annoncer un événement spécial la semaine prochaine, restez à l'écoute pour plus de détails.</p>
+                        <a href="#" class="card-link">Lire la suite</a>
+                    </div>
+                </article>
+                <article class="content-card">
+                    <img src="https://images.unsplash.com/photo-1487180144351-b8472da7d491?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=600" alt="Image d'actualité">
+                    <div class="card-content">
+                        <span class="card-date">28 Août, 2025</span>
+                        <h3>Invité spécial dans notre prochaine émission</h3>
+                        <p>Ne manquez pas notre interview exclusive avec un invité de marque qui partagera son parcours et ses projets futurs.</p>
+                        <a href="#" class="card-link">Lire la suite</a>
+                    </div>
+                </article>
+                <article class="content-card">
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=600" alt="Image d'actualité">
+                    <div class="card-content">
+                        <span class="card-date">25 Août, 2025</span>
+                        <h3>Retour sur le festival de musique</h3>
+                        <p>Un résumé complet de notre couverture du festival de musique local, avec des extraits des meilleures performances.</p>
+                        <a href="#" class="card-link">Lire la suite</a>
+                    </div>
+                </article>
             </div>
-          </div>
-        </article>
-        <aside class="card">
-          <div class="content">
-            <h2 style="margin:0 0 10px">À propos</h2>
-            <p class="mini">Résumé public et timeline via widget officiel Facebook.</p>
-            <div class="fb-page"
-                 data-href="https://www.facebook.com/profile.php?id=100067224102845"
-                 data-tabs="timeline"
-                 data-width="500"
-                 data-height="520"
-                 data-small-header="false"
-                 data-adapt-container-width="true"
-                 data-hide-cover="false"
-                 data-show-facepile="true">
-              <blockquote cite="https://www.facebook.com/profile.php?id=100067224102845"
-                          class="fb-xfbml-parse-ignore">
-                <a href="https://www.facebook.com/profile.php?id=100067224102845">Émission & Revue Fanjary</a>
-              </blockquote>
+        </section>
+
+        <!-- Section Emission (Replays) -->
+        <section id="emission" class="page-section">
+            <h2>Émissions / Replays</h2>
+            <div class="episode-list">
+                <div class="episode-item">
+                    <div class="episode-info">
+                        <h4>Émission du 02 Septembre, 2025</h4>
+                        <p>Thème : La musique électronique des années 90.</p>
+                    </div>
+                    <audio controls src=""></audio> <!-- L'attribut src sera ajouté plus tard -->
+                </div>
+                <div class="episode-item">
+                    <div class="episode-info">
+                        <h4>Émission du 01 Septembre, 2025</h4>
+                        <p>Thème : Interview avec un artiste local.</p>
+                    </div>
+                    <audio controls src=""></audio>
+                </div>
+                <div class="episode-item">
+                    <div class="episode-info">
+                        <h4>Émission du 31 Août, 2025</h4>
+                        <p>Thème : Les débuts du rock'n'roll.</p>
+                    </div>
+                    <audio controls src=""></audio>
+                </div>
             </div>
-          </div>
-        </aside>
-      </div>
-    </section>
+        </section>
 
-    <section class="section" id="posts">
-      <h2>Publications</h2>
-      <p class="mini">Flux d’actualités intégré depuis Facebook (embeds).</p>
-      <div class="grid-2">
-        <div class="card"><div class="content"><div class="fb-post"
-             data-href="https://www.facebook.com/story.php?id=100067224102845&story_fbid=959252289658899"
-             data-width="500"
-             data-show-text="true"></div></div></div>
-        <div class="card"><div class="content"><div class="fb-post"
-             data-href="https://www.facebook.com/story.php?id=100067224102845&story_fbid=952438973673564"
-             data-width="500"
-             data-show-text="true"></div></div></div>
-        <div class="card"><div class="content"><div class="fb-post"
-             data-href="https://www.facebook.com/story.php?id=100067224102845&story_fbid=931192392464889"
-             data-width="500"
-             data-show-text="true"></div></div></div>
-        <div class="card"><div class="content"><div class="fb-post"
-             data-href="https://m.facebook.com/story.php/?id=100067224102845&story_fbid=814352430815553"
-             data-width="500"
-             data-show-text="true"></div></div></div>
-      </div>
-    </section>
+        <!-- Section Programme -->
+        <section id="programme" class="page-section">
+            <h2>Programme de la Semaine</h2>
+            <div class="schedule-container">
+                <div class="schedule-day">
+                    <h3>Lundi</h3>
+                    <p><span>08:00 - 10:00:</span> Matinale Fanjary</p>
+                    <p><span>12:00 - 13:00:</span> Découvertes Musicales</p>
+                    <p><span>18:00 - 20:00:</span> L'Heure du Rock</p>
+                </div>
+                <div class="schedule-day">
+                    <h3>Mardi</h3>
+                    <p><span>08:00 - 10:00:</span> Matinale Fanjary</p>
+                    <p><span>16:00 - 18:00:</span> Culture & Débat</p>
+                    <p><span>20:00 - 22:00:</span> Soirée Jazz</p>
+                </div>
+                <div class="schedule-day">
+                    <h3>Mercredi</h3>
+                    <p><span>08:00 - 10:00:</span> Matinale Fanjary</p>
+                    <p><span>12:00 - 13:00:</span> Le Hit Parade</p>
+                    <p><span>18:00 - 20:00:</span> L'Heure du Rock</p>
+                </div>
+            </div>
+        </section>
 
-    <section class="section" id="photos">
-      <h2>Galerie Photos</h2>
-      <p class="mini">Photos s’affichent via les publications pour rester à jour automatiquement.</p>
-      <div class="gallery">
-        <div class="card"><div class="content"><div class="fb-post"
-             data-href="https://www.facebook.com/story.php?id=100067224102845&story_fbid=959252289658899"
-             data-width="350"></div></div></div>
-        <div class="card"><div class="content"><div class="fb-post"
-             data-href="https://www.facebook.com/story.php?id=100067224102845&story_fbid=952438973673564"
-             data-width="350"></div></div></div>
-        <div class="card"><div class="content"><div class="fb-post"
-             data-href="https://www.facebook.com/story.php?id=100067224102845&story_fbid=931192392464889"
-             data-width="350"></div></div></div>
-        <div class="card"><div class="content"><div class="fb-post"
-             data-href="https://m.facebook.com/story.php/?id=100067224102845&story_fbid=814352430815553"
-             data-width="350"></div></div></div>
-      </div>
-    </section>
+        <!-- Section À Propos (Animateurs) -->
+        <section id="apropos" class="page-section">
+            <h2>À Propos de Nous</h2>
+            <p class="about-description">Radio Fanjary est votre source de confiance pour la musique, les actualités et la culture. Notre mission est de mettre en lumière les talents locaux et de créer une communauté engagée. (L'historique sera complété ultérieurement).</p>
+            <h3>Nos Animateurs</h3>
+            <div class="grid-container">
+                <div class="animator-card">
+                    <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=200" alt="Photo de l'animateur">
+                    <h4>Jean Dupont</h4>
+                    <p>Animateur Principal</p>
+                </div>
+                <div class="animator-card">
+                    <img src="https://images.unsplash.com/photo-1520813792240-56fc4a3765a7?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=200" alt="Photo de l'animateur">
+                    <h4>Marie Dubois</h4>
+                    <p>Journaliste</p>
+                </div>
+                <div class="animator-card">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=200" alt="Photo de l'animateur">
+                    <h4>Paul Martin</h4>
+                    <p>Technicien Son</p>
+                </div>
+            </div>
+        </section>
 
-    <section class="section" id="contact">
-      <h2>Contact</h2>
-      <div class="grid-3">
-        <div class="card"><div class="content"><h3>Facebook</h3><p class="mini">Envoyer un message ou suivre la page.</p><a class="btn" href="https://www.facebook.com/profile.php?id=100067224102845" target="_blank">🔗 Ouvrir la page</a></div></div>
-        <div class="card"><div class="content"><h3>Messenger</h3><p class="mini">Si Messenger est activé.</p><a class="btn" href="https://m.me/100067224102845" target="_blank">💬 Ouvrir Messenger</a></div></div>
-        <div class="card"><div class="content"><h3>Partager</h3><p class="mini">Copiez l’URL de ce site vitrine.</p><button class="btn" id="shareBtn">🔗 Copier le lien</button></div></div>
-      </div>
-    </section>
+        <!-- Section Contact -->
+        <section id="contact" class="page-section">
+            <h2>Contact & Réseaux</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Restons connectés</h3>
+                    <p>Envoyez-nous un message ou suivez-nous sur les réseaux sociaux pour ne rien manquer de nos actualités.</p>
+                    <ul>
+                        <li><i data-lucide="phone"></i> +261 38 75 949 21</li>
+                        <li><i data-lucide="smartphone"></i> +261 34 18 789 41</li>
+                        <li><i data-lucide="mail"></i> fanjaryacum@gmail.com</li>
+                    </ul>
+                    <div class="social-links">
+                        <a href="https://facebook.com" title="Facebook" target="_blank"><i data-lucide="facebook"></i></a>
+                        <a href="https://twitter.com" title="Twitter" target="_blank"><i data-lucide="twitter"></i></a>
+                        <a href="https://instagram.com" title="Instagram" target="_blank"><i data-lucide="instagram"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <input type="text" name="name" placeholder="Votre Nom" required>
+                        <input type="email" name="email" placeholder="Votre Email" required>
+                        <textarea name="message" rows="5" placeholder="Votre Message" required></textarea>
+                        <button type="submit" class="cta-button">Envoyer</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
 
-    <section class="section" id="inspo">
-      <h2>Inspiration & Crédits</h2>
-      <div class="grid-2">
-        <div class="card"><div class="content"><h3>Article 99% Invisible</h3><p class="mini">Source d’inspiration : “Setting Up a Free One-Handed Touch-Typing System on Your PC”</p><a class="btn" href="https://99percentinvisible.org/article/one-hand-touch-typing-setup/" target="_blank">ℹ En ligne</a></div></div>
-        <div class="card"><div class="content"><h3>Remarques</h3><ul class="mini"><li>Contenu Facebook intégré via widgets officiels.</li><li>Le site s’inspire visuellement mais ne reprend pas de contenu protégé.</li><li>Thèmes inclus : sombre, clair, coloré.</li></ul></div></div>
-      </div>
-    </section>
-
-    <footer class="footer">
-      <p class="mini">&copy; 2025 — Vitrine non officielle inspirée de 99% Invisible. Tous droits réservés.</p>
+    <footer>
+        <div class="social-links">
+            <a href="https://facebook.com" title="Facebook" target="_blank"><i data-lucide="facebook"></i></a>
+            <a href="https://twitter.com" title="Twitter" target="_blank"><i data-lucide="twitter"></i></a>
+            <a href="https://instagram.com" title="Instagram" target="_blank"><i data-lucide="instagram"></i></a>
+        </div>
+        <p>&copy; 2025 Radio Fanjary. Site réalisé par Jules. Tous droits réservés.</p>
     </footer>
-  </main>
 
-  <script>
-    const modeToggle = document.getElementById('modeToggle');
-    const iconDark = document.getElementById('icon-dark');
-    const iconLight = document.getElementById('icon-light');
-    const themeMenu = document.getElementById('themeMenu');
-    const themePopup = document.getElementById('themePopup');
-    const shareBtn = document.getElementById('shareBtn');
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const toggleBtn = document.getElementById('sidebar-toggle');
+        const mainContent = document.getElementById('main-content');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('.page-section');
+        const sidebarWidth = '120px';
 
-    modeToggle.addEventListener('click', () => {
-      document.documentElement.classList.toggle('light');
-      const isLight = document.documentElement.classList.contains('light');
-      iconDark.style.display = isLight ? 'none' : '';
-      iconLight.style.display = isLight ? '' : 'none';
-    });
+        // --- Sidebar Toggle ---
+        function toggleSidebar() {
+            const isOpen = sidebar.classList.toggle('open');
+            mainContent.style.marginLeft = isOpen ? sidebarWidth : '0';
+            toggleBtn.innerHTML = isOpen ? '<i data-lucide="x"></i>' : '<i data-lucide="menu"></i>';
+            lucide.createIcons();
+        }
 
-    themeMenu.addEventListener('click', () => {
-      themePopup.style.display = themePopup.style.display === 'block' ? 'none' : 'block';
-    });
+        toggleBtn.addEventListener('click', toggleSidebar);
 
-    themePopup.addEventListener('click', (e) => {
-      if (e.target.dataset.theme) {
-        document.documentElement.classList.remove('light', 'color');
-        if (e.target.dataset.theme === 'light') document.documentElement.classList.add('light');
-        if (e.target.dataset.theme === 'color') document.documentElement.classList.add('color');
-        themePopup.style.display = 'none';
-      }
-    });
+        // --- Close sidebar on link click & update active state ---
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                // Smooth scroll
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                document.querySelector(targetId).scrollIntoView({ behavior: 'smooth' });
 
-    shareBtn.addEventListener('click', () => {
-      navigator.clipboard.writeText(location.href);
-      shareBtn.textContent = 'Lien copié !';
-      setTimeout(() => shareBtn.textContent = '🔗 Copier le lien', 2000);
-    });
-  </script>
+                // Close sidebar after click
+                if (sidebar.classList.contains('open')) {
+                    toggleSidebar();
+                }
+            });
+        });
+
+        // --- Active link highlighting on scroll ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href').substring(1) === entry.target.id) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, { rootMargin: '-50% 0px -50% 0px' }); // Activates when section is in the middle of the screen
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Initialise les icônes Lucide
+        lucide.createIcons();
+    </script>
+
 </body>
 </html>
