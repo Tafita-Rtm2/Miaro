@@ -458,9 +458,75 @@
         footer .social-links a:not(:last-child) {
             margin-right: 15px;
         }
+
+        /* Specific override for publication cards to handle fb-post height */
+        .publication-card {
+            min-height: 500px;
+            justify-content: center;
+            padding: 0;
+        }
+        .publication-card .fb-post {
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Floating Audio Player */
+        #floating-player {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1002;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: var(--glass-border);
+            border-radius: 50px;
+            padding: 10px;
+            box-shadow: var(--glass-shadow);
+            transform: translateX(calc(100% + 40px));
+            transition: transform 0.5s ease-in-out;
+        }
+        #floating-player.visible {
+            transform: translateX(0);
+        }
+        .track-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--muted-color);
+            padding-left: 10px;
+        }
+        #track-title {
+            max-width: 200px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: 0.9rem;
+        }
+        #player-control-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            flex-shrink: 0;
+            transition: transform 0.2s ease;
+        }
+        #player-control-btn:hover {
+            transform: scale(1.1);
+        }
     </style>
 </head>
 <body>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v20.0"></script>
 
     <!-- Bouton pour ouvrir/fermer la barre latérale -->
     <button id="sidebar-toggle" title="Ouvrir le menu">
@@ -519,32 +585,17 @@
         <section id="publication" class="page-section">
             <h2>Actualités</h2>
             <div class="grid-container">
-                <article class="content-card">
-                    <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=600" alt="Image d'actualité">
-                    <div class="card-content">
-                        <span class="card-date">01 Septembre, 2025</span>
-                        <h3>Nouvel événement à venir</h3>
-                        <p>Nous sommes ravis d'annoncer un événement spécial la semaine prochaine, restez à l'écoute pour plus de détails.</p>
-                        <a href="#" class="card-link">Lire la suite</a>
-                    </div>
+                <article class="content-card publication-card">
+                    <div class="fb-post" data-href="https://www.facebook.com/story.php?id=100067224102845&story_fbid=959252289658899" data-width="auto" data-show-text="true"></div>
                 </article>
-                <article class="content-card">
-                    <img src="https://images.unsplash.com/photo-1487180144351-b8472da7d491?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=600" alt="Image d'actualité">
-                    <div class="card-content">
-                        <span class="card-date">28 Août, 2025</span>
-                        <h3>Invité spécial dans notre prochaine émission</h3>
-                        <p>Ne manquez pas notre interview exclusive avec un invité de marque qui partagera son parcours et ses projets futurs.</p>
-                        <a href="#" class="card-link">Lire la suite</a>
-                    </div>
+                <article class="content-card publication-card">
+                    <div class="fb-post" data-href="https://www.facebook.com/story.php?id=100067224102845&story_fbid=952438973673564" data-width="auto" data-show-text="true"></div>
                 </article>
-                <article class="content-card">
-                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=600" alt="Image d'actualité">
-                    <div class="card-content">
-                        <span class="card-date">25 Août, 2025</span>
-                        <h3>Retour sur le festival de musique</h3>
-                        <p>Un résumé complet de notre couverture du festival de musique local, avec des extraits des meilleures performances.</p>
-                        <a href="#" class="card-link">Lire la suite</a>
-                    </div>
+                <article class="content-card publication-card">
+                    <div class="fb-post" data-href="https://www.facebook.com/story.php?id=100067224102845&story_fbid=931192392464889" data-width="auto" data-show-text="true"></div>
+                </article>
+                 <article class="content-card publication-card">
+                    <div class="fb-post" data-href="https://m.facebook.com/story.php/?id=100067224102845&story_fbid=814352430815553" data-width="auto" data-show-text="true"></div>
                 </article>
             </div>
         </section>
@@ -574,6 +625,27 @@
                     </div>
                     <audio controls src=""></audio>
                 </div>
+                <div class="episode-item">
+                    <div class="episode-info">
+                        <h4>Émission du 30 Août, 2025</h4>
+                        <p>Thème : Spéciale musiques de films.</p>
+                    </div>
+                    <audio controls src=""></audio>
+                </div>
+                <div class="episode-item">
+                    <div class="episode-info">
+                        <h4>Émission du 29 Août, 2025</h4>
+                        <p>Thème : Le meilleur du Hip-Hop français.</p>
+                    </div>
+                    <audio controls src=""></audio>
+                </div>
+                <div class="episode-item">
+                    <div class="episode-info">
+                        <h4>Émission du 28 Août, 2025</h4>
+                        <p>Thème : Classiques de la musique classique.</p>
+                    </div>
+                    <audio controls src=""></audio>
+                </div>
             </div>
         </section>
 
@@ -598,6 +670,30 @@
                     <p><span>08:00 - 10:00:</span> Matinale Fanjary</p>
                     <p><span>12:00 - 13:00:</span> Le Hit Parade</p>
                     <p><span>18:00 - 20:00:</span> L'Heure du Rock</p>
+                </div>
+                <div class="schedule-day">
+                    <h3>Jeudi</h3>
+                    <p><span>08:00 - 10:00:</span> Matinale Fanjary</p>
+                    <p><span>16:00 - 18:00:</span> Culture & Débat</p>
+                    <p><span>20:00 - 22:00:</span> Playlist des auditeurs</p>
+                </div>
+                <div class="schedule-day">
+                    <h3>Vendredi</h3>
+                    <p><span>08:00 - 10:00:</span> Matinale Fanjary</p>
+                    <p><span>18:00 - 20:00:</span> L'Heure du Rock</p>
+                    <p><span>22:00 - 00:00:</span> DJ Set en direct</p>
+                </div>
+                <div class="schedule-day">
+                    <h3>Samedi</h3>
+                    <p><span>10:00 - 12:00:</span> Le meilleur des émissions</p>
+                    <p><span>14:00 - 16:00:</span> Top 40</p>
+                    <p><span>20:00 - 00:00:</span> Nuit festive</p>
+                </div>
+                 <div class="schedule-day">
+                    <h3>Dimanche</h3>
+                    <p><span>10:00 - 12:00:</span> Émission Rétro</p>
+                    <p><span>14:00 - 16:00:</span> Musique du monde</p>
+                    <p><span>18:00 - 20:00:</span> Ambiance décontractée</p>
                 </div>
             </div>
         </section>
@@ -665,6 +761,17 @@
         <p>&copy; 2025 Radio Fanjary. Site réalisé par Jules. Tous droits réservés.</p>
     </footer>
 
+    <!-- Floating Audio Player -->
+    <div id="floating-player" class="hidden">
+        <div class="track-info">
+            <i data-lucide="radio"></i>
+            <span id="track-title">Aucune lecture</span>
+        </div>
+        <button id="player-control-btn" title="Lecture/Pause">
+            <i data-lucide="play"></i>
+        </button>
+    </div>
+
     <script>
         const sidebar = document.getElementById('sidebar');
         const toggleBtn = document.getElementById('sidebar-toggle');
@@ -714,6 +821,49 @@
 
         sections.forEach(section => {
             observer.observe(section);
+        });
+
+        // --- Floating Player Logic ---
+        const floatingPlayer = document.getElementById('floating-player');
+        const trackTitleEl = document.getElementById('track-title');
+        const playerControlBtn = document.getElementById('player-control-btn');
+        const audioElements = document.querySelectorAll('.episode-item audio');
+        let currentAudio = null;
+
+        audioElements.forEach(audio => {
+            audio.addEventListener('play', () => {
+                // Pause other audio elements
+                if (currentAudio && currentAudio !== audio) {
+                    currentAudio.pause();
+                }
+                currentAudio = audio;
+
+                // Update track title
+                const episodeInfo = audio.closest('.episode-item').querySelector('.episode-info h4');
+                trackTitleEl.textContent = episodeInfo ? episodeInfo.textContent : 'Piste en cours';
+
+                // Update player UI
+                floatingPlayer.classList.add('visible');
+                playerControlBtn.innerHTML = '<i data-lucide="pause"></i>';
+                lucide.createIcons();
+            });
+
+            audio.addEventListener('pause', () => {
+                if (currentAudio === audio) {
+                    playerControlBtn.innerHTML = '<i data-lucide="play"></i>';
+                    lucide.createIcons();
+                }
+            });
+        });
+
+        playerControlBtn.addEventListener('click', () => {
+            if (currentAudio) {
+                if (currentAudio.paused) {
+                    currentAudio.play();
+                } else {
+                    currentAudio.pause();
+                }
+            }
         });
 
         // Initialise les icônes Lucide
